@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { EventItem } from "./components/EventItem";
 
-const Events = () => {
+const Events = ({ searchTerm }) => {
 	const [apiData, setApiData] = useState([]);
 
 	const getApiData = async () => {
@@ -25,19 +25,35 @@ const Events = () => {
 		getApiData();
 	}, []);
 
-	const eventsComponent = apiData.map((eventItem) => (
-		<EventItem
-			key={eventItem.id}
-			info={eventItem.info}
-			name={eventItem.name}
-			image={eventItem.images[0].url}
-		/>
-	));
+	const handleEventClick = (id) => {
+		console.log(id);
+	};
+
+	const renderEvents = () => {
+		let eventsFiltered = apiData;
+
+		if (searchTerm.length > 0) {
+			eventsFiltered = eventsFiltered.filter((item) =>
+				item.name.toLowerCase().includes(searchTerm)
+			);
+		}
+
+		return eventsFiltered.map((eventItem) => (
+			<EventItem
+				key={eventItem.id}
+				id={eventItem.id}
+				info={eventItem.info}
+				name={eventItem.name}
+				image={eventItem.images[0].url}
+				onEventClick={handleEventClick}
+			/>
+		));
+	};
 
 	return (
 		<>
 			<div>Eventos</div>
-			{eventsComponent}
+			{renderEvents()}
 		</>
 	);
 };
