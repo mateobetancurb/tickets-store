@@ -1,9 +1,11 @@
+import { Navbar } from "./components/Navbar";
+import { Events } from "./components/Events";
+
 const App = () => {
 	return (
 		<>
-			<dir>
-				<h1>App</h1>
-			</dir>
+			<Navbar />
+			<Events />
 		</>
 	);
 };
