@@ -15,13 +15,16 @@ const Navbar = ({ onSearch }) => {
 
 	return (
 		<>
-			<p>Navbar</p>
-			<input
-				placeholder="Busca aquí tus eventos"
-				onChange={handleInputChange}
-				onKeyDown={handleInputKeyDown}
-				value={search}
-			/>
+			<div className="flex items-center justify-between w-4/5 mx-auto py-10">
+				<p className="text-lg font-extrabold">La tiquetera</p>
+				<input
+					placeholder="Busca tu evento favorito..."
+					onChange={handleInputChange}
+					onKeyDown={handleInputKeyDown}
+					value={search}
+					className="bg-[#00000034] p-3 rounded-lg placeholder:text-white shadow-md"
+				/>
+			</div>
 		</>
 	);
 };
