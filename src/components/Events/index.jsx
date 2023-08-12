@@ -8,9 +8,9 @@ const Events = ({ searchTerm }) => {
 
 	const getApiData = async () => {
 		try {
-			const url = `${import.meta.env.VITE_URL_API}${
+			const url = `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${
 				import.meta.env.VITE_CONSUMER_KEY
-			}`;
+			}&countryCode=MX`;
 			const req = await fetch(url);
 			const res = await req.json();
 			const events = res._embedded.events;
