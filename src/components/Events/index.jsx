@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { EventItem } from "./components/EventItem";
 
 const Events = ({ searchTerm }) => {
 	const [apiData, setApiData] = useState([]);
+	const navigate = useNavigate();
 
 	const getApiData = async () => {
 		try {
@@ -26,7 +28,7 @@ const Events = ({ searchTerm }) => {
 	}, []);
 
 	const handleEventClick = (id) => {
-		console.log(id);
+		navigate(`/detail/${id}`);
 	};
 
 	const renderEvents = () => {
@@ -52,7 +54,9 @@ const Events = ({ searchTerm }) => {
 
 	return (
 		<>
-			<div>Eventos</div>
+			<div className="text-center text-lg font-extrabold mt-5 mb-16">
+				Eventos que no puedes perderte este mes
+			</div>
 			{renderEvents()}
 		</>
 	);
