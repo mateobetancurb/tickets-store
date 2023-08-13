@@ -12,11 +12,11 @@ const Events = ({ searchTerm }) => {
 				import.meta.env.VITE_CONSUMER_KEY
 			}&countryCode=MX`;
 			const req = await fetch(url);
-			const res = await req.json();
-			const events = res._embedded.events;
 			if (!req.ok) {
 				throw new Error("Error HTTP:" + req.status);
 			}
+			const res = await req.json();
+			const events = res._embedded.events;
 			setApiData(events);
 		} catch (error) {
 			console.log(error);
