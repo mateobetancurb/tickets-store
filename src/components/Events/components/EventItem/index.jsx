@@ -5,10 +5,7 @@ const EventItem = ({ id, info, name, image, onEventClick }) => {
 	};
 
 	return (
-		<div
-			onClick={() => console.log("padre click")}
-			className="flex w-4/5 mx-auto mb-3 gap-5"
-		>
+		<div className="flex w-4/5 mx-auto mb-1 gap-5 hover:bg-gray-700 p-5 rounded-lg transition-colors">
 			<img
 				src={image}
 				alt={name}
